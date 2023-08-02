@@ -1,0 +1,21 @@
+h1{
+    color: blue;
+}
+
+.form-error{
+    color: red;
+}
+
+footer {
+    text-align: center;
+    background-color: light-grey;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.inline-form{
+    display: inline;
+}

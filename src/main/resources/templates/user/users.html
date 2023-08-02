@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <main class="container">
+        <h1>Liste des utilisateurs</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>first name</td>
+                <td>last name</td>
+                <td>email</td>
+                <td>role</td>
+                <td>birthDate</td>
+                <td>enabled</td>
+                <td>actions</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${list}" th:object="${user}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{first_name}"></td>
+                <td th:text="*{last_name}"></td>
+                <td th:text="*{email}"></td>
+                <td th:text="*{role}"></td>
+                <td th:text="*{birthDate}"></td>
+                <td th:text="*{enabled}"></td>
+
+                <td>
+                    <a th:href="@{ /user/{id} (id=*{id}) }">details</a>
+                    <a th:href="@{ /user/update-user/{id} (id=*{id}) }">update</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

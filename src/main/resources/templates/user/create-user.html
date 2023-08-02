@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Utilisateur</title>
+</head>
+<body>
+<h1>Formulaire Utilisateur</h1>
+<form th:object="${formulaire}" th:action="@{/user/create-user}" method="post">
+    <div>
+        <label>Prénom:</label>
+        <input type="text" th:field="*{first_name}" required>
+        <span th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}"></span>
+    </div>
+    <div>
+        <label>Nom:</label>
+        <input type="text" th:field="*{last_name}" required>
+        <span th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></span>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    </div>
+    <div>
+        <label>Mot de passe:</label>
+        <input type="password" th:field="*{password}" required>
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <span class="error-message" th:if="${not #fields.hasErrors('*') and not #fields.hasErrors('addressForm.country') 
+                    and not #fields.hasErrors('first_name') and not #fields.hasErrors('last_name') 
+                    and not #fields.hasErrors('email') and not #fields.hasErrors('password') 
+                    and not #fields.hasErrors('confirmPassword') and not #fields.hasErrors('birthDate') 
+                    and not #fields.hasErrors('addressForm.street') and not #fields.hasErrors('addressForm.number') 
+                    and not #fields.hasErrors('addressForm.box') and not #fields.hasErrors('addressForm.city') 
+                    and not #fields.hasErrors('addressForm.zip')}"></span>
+                <span th:each="error : ${#fields.globalErrors}" th:text="${error}"></span>
+        </div>
+    </div>
+    <div>
+        <label>Confirmer le mot de passe:</label>
+        <input type="password" th:field="*{confirmPassword}" required>
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <span class="error-message" th:if="${not #fields.hasErrors('*') and not #fields.hasErrors('addressForm.country') 
+                    and not #fields.hasErrors('first_name') and not #fields.hasErrors('last_name') 
+                    and not #fields.hasErrors('email') and not #fields.hasErrors('password') 
+                    and not #fields.hasErrors('confirmPassword') and not #fields.hasErrors('birthDate') 
+                    and not #fields.hasErrors('addressForm.street') and not #fields.hasErrors('addressForm.number') 
+                    and not #fields.hasErrors('addressForm.box') and not #fields.hasErrors('addressForm.city') 
+                    and not #fields.hasErrors('addressForm.zip')}"></span>
+                <span th:each="error : ${#fields.globalErrors}" th:text="${error}"></span>
+        </div>
+    </div>
+    <div>
+        <label>Date de naissance:</label>
+        <input type="date" th:field="*{birthDate}" required>
+        <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+    </div>
+
+    <!-- Formulaire pour l'adresse -->
+    <h2>Adresse</h2>
+    <div>
+        <label>Rue:</label>
+        <input type="text" th:field="*{addressForm.street}" required>
+        <span th:if="${#fields.hasErrors('addressForm.street')}" th:errors="*{addressForm.street}"></span>
+    </div>
+    <div>
+        <label>Numéro:</label>
+        <input type="number" th:field="*{addressForm.number}" required>
+        <span th:if="${#fields.hasErrors('addressForm.number')}" th:errors="*{addressForm.number}"></span>
+    </div>
+    <div>
+        <label>Boîte:</label>
+        <input type="text" th:field="*{addressForm.box}">
+        <span th:if="${#fields.hasErrors('addressForm.box')}" th:errors="*{addressForm.box}"></span>
+    </div>
+    <div>
+        <label>Ville:</label>
+        <input type="text" th:field="*{addressForm.city}" required>
+        <span th:if="${#fields.hasErrors('addressForm.city')}" th:errors="*{addressForm.city}"></span>
+    </div>
+    <div>
+        <label>Code postal:</label>
+        <input type="number" th:field="*{addressForm.zip}" required>
+        <span th:if="${#fields.hasErrors('addressForm.zip')}" th:errors="*{addressForm.zip}"></span>
+    </div>
+    <div>
+        <label>Pays:</label>
+        <input type="text" th:field="*{addressForm.country}" required>
+        <span th:if="${#fields.hasErrors('addressForm.country')}" th:errors="*{addressForm.country}"></span>
+    </div>    
+    <div>
+        <button type="submit">Valider</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <div class="card mt-2" th:object="${user}">
+
+        <h1>User details</h1>
+
+        <div class="card-body">
+            <p>
+                <label class="field-title">id: </label>
+                <span class="field-value" th:text="*{id}"></span>
+            </p>
+            <p>
+                <label class="field-title">first name: </label>
+                <span class="field-value" th:text="*{first_name}"></span>
+            </p>
+            <p>
+                <label class="field-title">last name: </label>
+                <span class="field-value" th:text="*{last_name}"></span>
+            </p>
+            <p>
+                <label class="field-title">email: </label>
+                <span class="field-value" th:text="*{email}"></span>
+            </p>
+            <p>
+                <label class="field-title">address: </label>
+                <p class="field-value" th:text="*{address.street} + ' ' + *{address.number} + '' + *{address.box}"></p>
+                <p class="field-value" th:text="*{address.zip} + ' ' + *{address.city}"></p>
+                <p class="field-value" th:text="*{address.country}"></p>
+            </p>
+            <p>
+                <label class="field-title">role: </label>
+                <span class="field-value" th:text="*{role}"></span>
+            </p>
+            <p>
+                <label class="field-title">birthDate: </label>
+                <span class="field-value" th:text="*{birthDate}"></span>
+            </p>
+            <p>
+                <label class="field-title">enabled: </label>
+                <span class="field-value" th:text="*{enabled}"></span>
+            </p>
+            <p>
+        </div>
+    </div>
+
+
+    <a href="/user/users">back</a>
+</main>
+
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

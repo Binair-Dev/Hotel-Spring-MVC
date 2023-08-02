@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Modification user</h1>
+    <form th:action ="@{/user/update-user/{id} (id=${id}) }" method="post" th:object="${formulaire}">
+        <div class="form-group">
+            <label for="in-first_name">first name:</label>
+            <input type="text" th:field="*{first_name}" id="in-first_name">
+            <div th:if="${#fields.hasErrors('first_name')}" >
+                <span th:errors="*{first_name}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-last_name">last name:</label>
+            <input type="text" th:field="*{last_name}" id="in-last_name">
+            <div th:if="${#fields.hasErrors('last_name')}" >
+                <span th:errors="*{last_name}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-email">email:</label>
+            <input type="text" th:field="*{email}" id="in-email">
+            <div th:if="${#fields.hasErrors('email')}" >
+                <span th:errors="*{email}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-password">password:</label>
+            <input type="password" th:field="*{password}" id="in-password">
+            <div th:if="${#fields.hasErrors('password')}" >
+                <span th:errors="*{password}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-confirmPassword">password confirm:</label>
+            <input type="password" th:field="*{confirmPassword}" id="in-confirmPassword">
+            <div th:if="${#fields.hasErrors('confirmPassword')}" >
+                <span th:errors="*{confirmPassword}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-birthDate">birth date:</label>
+            <input type="date" th:field="*{birthDate}" id="in-birthDate">
+            <div th:if="${#fields.hasErrors('birthDate')}" >
+                <span th:errors="*{birthDate}" class="form-error"></span>
+            </div>
+        </div>
+        <h1>Modification de l'adresse</h1>
+        <div class="form-group">
+            <label for="in-addressForm.street">rue:</label>
+            <input type="text" th:field="*{addressForm.street}" id="in-addressForm.street">
+            <div th:if="${#fields.hasErrors('addressForm.street')}" >
+                <span th:errors="*{addressForm.street}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-addressForm.number">nombre:</label>
+            <input type="number" th:field="*{addressForm.number}" id="in-addressForm.number">
+            <div th:if="${#fields.hasErrors('addressForm.number')}" >
+                <span th:errors="*{addressForm.number}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-addressForm.box">box:</label>
+            <input type="text" th:field="*{addressForm.box}" id="in-addressForm.box">
+            <div th:if="${#fields.hasErrors('addressForm.box')}" >
+                <span th:errors="*{addressForm.box}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-addressForm.city">city:</label>
+            <input type="text" th:field="*{addressForm.city}" id="in-addressForm.city">
+            <div th:if="${#fields.hasErrors('addressForm.city')}" >
+                <span th:errors="*{addressForm.city}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-addressForm.zip">zip:</label>
+            <input type="number" th:field="*{addressForm.zip}" id="in-addressForm.zip">
+            <div th:if="${#fields.hasErrors('addressForm.zip')}" >
+                <span th:errors="*{addressForm.zip}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="in-addressForm.country">country:</label>
+            <input type="text" th:field="*{addressForm.country}" id="in-addressForm.country">
+            <div th:if="${#fields.hasErrors('addressForm.country')}" >
+                <span th:errors="*{addressForm.country}" class="form-error"></span>
+            </div>
+        </div>
+        <button type="submit">Envoyer</button>
+    </form>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

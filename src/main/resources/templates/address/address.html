@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <div class="card mt-2" th:object="${address}">
+
+        <h1>Address details</h1>
+
+        <div class="card-body">
+            <p>
+                <span class="field-title">id: </span>
+                <span class="field-value" th:text="*{id}"></span>
+            </p>
+            <p>
+                <span class="field-title">street: </span>
+                <span class="field-value" th:text="*{street}"></span>
+            </p>
+            <p>
+                <span class="field-title">number: </span>
+                <span class="field-value" th:text="*{number}"></span>
+            </p>
+            <p>
+                <span class="field-title">box: </span>
+                <span class="field-value" th:text="*{box}"></span>
+            </p>
+            <p>
+                <span class="field-title">city: </span>
+                <span class="field-value" th:text="*{city}"></span>
+            </p>
+            <p>
+                <span class="field-title">zip: </span>
+                <span class="field-value" th:text="*{zip}"></span>
+            </p>
+            <p>
+                <span class="field-title">country: </span>
+                <span class="field-value" th:text="*{country}"></span>
+            </p>
+        </div>
+    </div>
+    <a href="/address/addresses">back</a>
+</main>
+
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

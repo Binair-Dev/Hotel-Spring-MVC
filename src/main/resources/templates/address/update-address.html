@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Modification user</h1>
+    <form th:action ="@{/address/update-address/{id} (id=${id}) }" method="post" th:object="${formulaire}">
+        <div class="form-street">
+            <label for="in-street">nom:</label>
+            <input type="text" th:field="*{street}" id="in-street">
+            <div th:if="${#fields.hasErrors('street')}" >
+                <span th:errors="*{street}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-number">
+            <label for="in-number">nom:</label>
+            <input type="number" th:field="*{number}" id="in-number">
+            <div th:if="${#fields.hasErrors('number')}" >
+                <span th:errors="*{number}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-box">
+            <label for="in-box">nom:</label>
+            <input type="text" th:field="*{box}" id="in-box">
+            <div th:if="${#fields.hasErrors('box')}" >
+                <span th:errors="*{box}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-city">
+            <label for="in-city">nom:</label>
+            <input type="text" th:field="*{city}" id="in-city">
+            <div th:if="${#fields.hasErrors('city')}" >
+                <span th:errors="*{city}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-zip">
+            <label for="in-zip">nom:</label>
+            <input type="number" th:field="*{zip}" id="in-zip">
+            <div th:if="${#fields.hasErrors('zip')}" >
+                <span th:errors="*{zip}" class="form-error"></span>
+            </div>
+        </div>
+        <div class="form-country">
+            <label for="in-country">nom:</label>
+            <input type="text" th:field="*{country}" id="in-country">
+            <div th:if="${#fields.hasErrors('country')}" >
+                <span th:errors="*{country}" class="form-error"></span>
+            </div>
+        </div>
+       <button type="submit">Envoyer</button>
+    </form>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

@@ -20,11 +20,9 @@ public class User {
     private String email;
     private String password;
     @ManyToOne
-    @JoinColumn(name = "address_myo_id")
+    @JoinColumn(name = "address_love_id")
     private Address address;
 
-    @Enumerated(EnumType.STRING)
-    private UserEnumRole role;
     private LocalDate birthDate;
     private boolean enabled;
 
@@ -33,7 +31,6 @@ public class User {
         this.last_name = lastName;
         this.email = email;
         this.password = password;
-        this.role = UserEnumRole.C;
         this.birthDate = birth;
         this.enabled = true;
     }

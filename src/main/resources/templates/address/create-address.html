@@ -34,21 +34,21 @@
             </div>
         </div>
         <div class="form-city">
-            <label for="in-city">box:</label>
+            <label for="in-city">city:</label>
             <input type="text" th:field="*{city}" id="in-city">
             <div th:if="${#fields.hasErrors('city')}" >
                 <span th:errors="*{city}" class="form-error"></span>
             </div>
         </div>
         <div class="form-zip">
-            <label for="in-zip">box:</label>
+            <label for="in-zip">zip:</label>
             <input type="number" th:field="*{zip}" id="in-zip">
             <div th:if="${#fields.hasErrors('zip')}" >
                 <span th:errors="*{zip}" class="form-error"></span>
             </div>
         </div>
         <div class="form-country">
-            <label for="in-country">box:</label>
+            <label for="in-country">country:</label>
             <input type="text" th:field="*{country}" id="in-country">
             <div th:if="${#fields.hasErrors('country')}" >
                 <span th:errors="*{country}" class="form-error"></span>

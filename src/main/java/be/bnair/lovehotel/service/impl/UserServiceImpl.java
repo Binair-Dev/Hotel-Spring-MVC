@@ -39,8 +39,6 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(addressForm, address);
 
         entity.setAddress(address);
-        entity.setRole(UserEnumRole.C);
-
 
         AddressDTO adto = addressRepository.findOneByStreetAndNumberAndBoxAndCityAndZipAndCountry(
             address.getStreet(), address.getNumber(), address.getBox(),

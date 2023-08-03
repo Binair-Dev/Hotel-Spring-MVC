@@ -11,6 +11,4 @@ public interface UserService {
     UserDTO getOne(Long id);
     void update(UserForm form, Long id);
     List<UserDTO>getAll();
-
-
 }

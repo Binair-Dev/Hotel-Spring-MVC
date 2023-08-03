@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'hôtel</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <main class="container">
+        <h1>Détails de l'hôtel</h1>
+
+        <div>
+            <p><strong>Id:</strong> <span th:text="${hotel.id}"></span></p>
+            <p><strong>Nom:</strong> <span th:text="${hotel.name}"></span></p>
+            <p>
+                <strong>Adresse:</strong> 
+                <span th:text="${hotel.address.street}"></span>
+                <span th:text="${hotel.address.number}"></span>
+                <span th:text="${hotel.address.box}"></span>
+                <span th:text="${hotel.address.city}"></span>
+                <span th:text="${hotel.address.zip}"></span>
+                <span th:text="${hotel.address.country}"></span>
+            </p>
+            <p>
+                <strong>Propriétaire:</strong> 
+                <span th:text="${hotel.owner.first_name}"></span>
+                <span th:text="${hotel.owner.last_name}"></span>
+            </p>
+        </div>
+    </main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

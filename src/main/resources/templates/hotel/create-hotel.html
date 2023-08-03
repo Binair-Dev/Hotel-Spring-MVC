@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un hôtel</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Créer un hôtel</h1>
+
+    <form th:action="@{/hotel/create-hotel}" th:object="${formulaire}" method="post">
+
+        <div>
+            <label for="name">Nom de l'hôtel:</label>
+            <input type="text" id="name" name="name" required th:field="*{name}" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        </div>        
+
+        <div>
+            <label for="address">Adresse:</label>
+            <select id="address" name="selectedAddressId" required>
+                <option value="">Sélectionner une adresse</option>
+                <option th:each="address : ${addressList}" th:value="${address.id}" th:text="${address.street + ', ' + address.city + ', ' + address.country}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="owner">Propriétaire:</label>
+            <select id="owner" name="selectedOwnerId" required>
+                <option value="">Sélectionner un propriétaire</option>
+                <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.first_name + ' ' + user.last_name}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('owner')}" th:errors="*{owner}" class="error"></span>
+        </div>
+
+
+        <div>
+            <button type="submit">Créer</button>
+        </div>
+
+    </form>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

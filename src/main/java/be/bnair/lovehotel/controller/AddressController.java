@@ -49,7 +49,7 @@ public class AddressController {
         }
 
         addressService.create(form);
-        return "redirect:/address/address";
+        return "redirect:/address/addresses";
     }
 
     @GetMapping("/update-address/{id:[0-9]+}")

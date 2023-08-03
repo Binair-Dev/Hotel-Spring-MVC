@@ -9,7 +9,6 @@ import be.bnair.lovehotel.repository.AddressRepository;
 import be.bnair.lovehotel.repository.UserRepository;
 import be.bnair.lovehotel.models.entities.User;
 import be.bnair.lovehotel.service.UserService;
-import be.bnair.lovehotel.utils.UserEnumRole;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

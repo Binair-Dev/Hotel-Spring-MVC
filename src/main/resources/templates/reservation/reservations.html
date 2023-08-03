@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des réservations</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Liste des réservations</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>User</td>
+            <td>Chamber</td>
+            <td>Start Date</td>
+            <td>End Date</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation : ${list}">
+            <td th:text="${reservation.id}"></td>
+            <td>
+                <span th:text="${reservation.user.first_name}"></span>
+                <span th:text="${reservation.user.last_name}"></span>
+            </td>
+            <td th:text="${reservation.chamber.name}"></td>
+            <td th:text="${reservation.startDate}"></td>
+            <td th:text="${reservation.endDate}"></td>
+            <td>
+                <a th:href="@{/reservation/{id}(id=${reservation.id})}">Détails</a>
+                <a th:href="@{/reservation/update-reservation/{id}(id=${reservation.id})}">Modifier</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

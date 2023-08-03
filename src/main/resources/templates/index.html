@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>LoveHotel</title>
-        <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
-    </head>
-    <body>
-        <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
-        <h2>Bienvenue dans mon hotel 69 étoiles!</h2>
-        <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>LoveHotel | Accueil</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+	<th:block th:replace="~{ /fragment/fragments :: js }"></th:block>
+</head>
+<body>
+    <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 text-center">
+                <h2 class="text-center">Le Temple de la Dopamine !</h2>
+                <p class="text-center">―――   Love Hotel   ―――</p>
+				<img class="img-fluid"
+					src="https://static.wixstatic.com/media/41ada0_377284407e2b495fbd39081bd2f10d81~mv2.jpg/v1/fill/w_980,h_631,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/41ada0_377284407e2b495fbd39081bd2f10d81~mv2.jpg" 
+					alt="La chambre close du Temple d'Opaline, votre love hotel d'exception ..."
+					style=".img-fluid. max-width: 100%;"
+				>
+				<h3 style="padding-top: 50px">PRESENTATION</h3>
+				<p>
+					Vous recherchez un lieu d'exception pour vos rendez-vous intimes, vos aventures amoureuses, vos 5 à 7 ou vos escapades sexuelles en couple ? Le Temple de la Dopamine vous accueille en toute discrétion dans le respect le plus strict de votre anonymat.
+					Loin du cliché du motel  de passe digne d’une mauvaise série B, notre Love Hôtel vous propose plusieurs chambres spacieuses et luxueuses décorées avec goût dans un style boudoir contribuant à créer une ambiance chaude et érotique propice à la détente et au plaisir. C'est un espace dédié au luxe, au raffinement, à la sensualité et à la volupté que vous mettons ainsi à votre disposition afin de vous permettre de partager un moment coquin-câlins pour 2h00, 3h00, 4h00, une journée, une nuit ou un WE  ... Nos chambres (qui comprennent toutes un jacuzzi privatif) riment avec charme, élégance et romantisme afin de mieux stimuler vos sens et libérer votre imaginaire.  N'hésitez pas : laissez la place à vos désirs et profitez à fond de ce moment d’évasion hors du temps ! 
+					Il va de soi que l’hygiène de nos chambres est irréprochable et que chacune d’elles est complètement nettoyée et désinfectée après chaque visite.
+				</p>
+				<img class="img-fluid"
+					src="https://static.wixstatic.com/media/41ada0_61e054b66fbb471485b2e69357b7350b~mv2.jpg/v1/fill/w_980,h_631,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/41ada0_61e054b66fbb471485b2e69357b7350b~mv2.jpg" 
+					alt="La chambre close du Temple d'Opaline, votre love hotel d'exception ..."
+					style=".img-fluid. max-width: 100%;"
+				>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
 </html>

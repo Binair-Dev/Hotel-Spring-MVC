@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de la réservation</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Détails de la réservation</h1>
+
+    <div>
+        <h2>ID:</h2>
+        <p th:text="${reservation.id}"></p>
+    </div>
+
+    <div>
+        <h2>Utilisateur:</h2>
+        <p>
+            <p>Nom: <span th:text="${reservation.user.first_name}"></p>
+            <p>Prénom: <span th:text="${reservation.user.last_name}"></p>
+            <p>Email: <span th:text="${reservation.user.email}"></p>
+            <p>Role: <span th:text="${reservation.user.role}"></p>
+            <p>Date de naissance: <span th:text="${reservation.user.birthDate}"></p>
+            <p>Enabled: <span th:text="${reservation.user.enabled}"></p>
+            <!-- Ajoutez ici d'autres informations spécifiques à l'utilisateur -->
+        </p>
+    </div>
+
+    <div>
+        <h2>Chambre:</h2>
+        <p>
+            <p>Nom de la chambre: <span th:text="${reservation.chamber.name}"></p>
+            <p>Hôtel: <span th:text="${reservation.chamber.hotel.name}"></p>
+            <p>Adresse de l'hôtel:
+            <p th:text="${reservation.chamber.hotel.address.number + ' ' + reservation.chamber.hotel.address.box + ' ' + reservation.chamber.hotel.address.street}"></p>
+            <p th:text="${reservation.chamber.hotel.address.city + ', ' + reservation.chamber.hotel.address.country}"></p>
+            <p>Type de chambre:
+
+            </span>
+            <span th:text="${reservation.chamber.type}"></p>
+            <p>Prix: </span><span th:text="${reservation.chamber.price} + '€/nuit'"></p>
+            <!-- Ajoutez ici d'autres informations spécifiques à la chambre -->
+        </p>
+    </div>
+
+    <div>
+        <h2>Date de début:</h2>
+        <p th:text="${reservation.startDate}"></p>
+    </div>
+
+    <div>
+        <h2>Date de fin:</h2>
+        <p th:text="${reservation.endDate}"></p>
+    </div>
+
+    <!-- Ajoutez ici d'autres informations que vous souhaitez afficher pour la réservation -->
+
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mettre à jour une réservation</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Mettre à jour une réservation</h1>
+
+    <form th:action="@{/reservation/update-reservation/{id}(id=${id})}" th:object="${formulaire}" method="post">
+
+        <div>
+            <label for="user">Utilisateur:</label>
+            <select id="user" name="user" required>
+                <option value="">Sélectionner un utilisateur</option>
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.first_name + ' ' + user.last_name}" th:selected="${user.id == formulaire.user}"></option>
+            </select>            
+            <span th:if="${#fields.hasErrors('user')}" th:errors="*{user}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="chamber">Chambre:</label>
+            <select id="chamber" name="chamber" required>
+                <option value="">Sélectionner une chambre</option>
+                <option th:each="chamber : ${chambers}" th:value="${chamber.id}" th:text="${chamber.name}" th:selected="${chamber.id == formulaire.chamber}"></option>
+            </select>            
+            <span th:if="${#fields.hasErrors('chamber')}" th:errors="*{chamber}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="startDate">Date de début:</label>
+            <input type="date" id="startDate" name="startDate" required th:value="${#temporals.format(formulaire.startDate, 'yyyy-MM-dd')}" />
+            <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="endDate">Date de fin:</label>
+            <input type="date" id="endDate" name="endDate" required th:value="${#temporals.format(formulaire.endDate, 'yyyy-MM-dd')}" />
+            <span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="error"></span>
+        </div>
+
+        <div>
+            <button type="submit">Mettre à jour</button>
+        </div>
+
+    </form>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

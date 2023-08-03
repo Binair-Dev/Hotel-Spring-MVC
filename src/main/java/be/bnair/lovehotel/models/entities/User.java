@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-import be.bnair.lovehotel.utils.UserEnumRole;
+import be.bnair.lovehotel.utils.EnumUserRole;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -24,7 +24,7 @@ public class User {
     private Address address;
 
     @Enumerated(EnumType.STRING)
-    private UserEnumRole role;
+    private EnumUserRole role;
 
     private LocalDate birthDate;
     private boolean enabled;

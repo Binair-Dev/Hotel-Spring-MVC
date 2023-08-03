@@ -1,34 +1,102 @@
 
 <th:block th:fragment="css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </th:block>
 
 <th:block th:fragment="js">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
 </th:block>
 
 <th:block th:fragment="header">
+    <style>
+		body {
+			cursor: url('https://png.pngtree.com/element_our/20190602/ourmid/pngtree-red-bra-decoration-illustration-image_1383494.jpg'), auto;
+		}
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content button {
+            display: block;
+            background-color: transparent;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/static">LoveHotel</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="/">Accueil</a>
-                    </div>
+        <nav>
+            <button onclick="window.location.href='http://localhost:8080/'">HOME</button>
+            <div class="dropdown">
+                <button>Users</button>
+                <div class="dropdown-content">
+                    <button onclick="window.location.href='http://localhost:8080/user/create-user'">Create a user</button>
+                    <button onclick="window.location.href='http://localhost:8080/user/users'">See users</button>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Hotels</button>
+                <div class="dropdown-content">
+                    <button onclick="window.location.href='http://localhost:8080/hotel/create-hotel'">Create an hotel</button>
+                    <button onclick="window.location.href='http://localhost:8080/hotel/hotels'">See hotel</button>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Chambers</button>
+                <div class="dropdown-content">
+                    <button onclick="window.location.href='http://localhost:8080/chamber/create-chamber'">Create a chamber</button>
+                    <button onclick="window.location.href='http://localhost:8080/chamber/chambers'">See chambers</button>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Addresses</button>
+                <div class="dropdown-content">
+                    <button onclick="window.location.href='http://localhost:8080/address/create-address'">Create an address</button>
+                    <button onclick="window.location.href='http://localhost:8080/address/addresses'">See addresses</button>
                 </div>
             </div>
         </nav>
-    </header>
+    </header>    
 </th:block>
 
+<!-- Fragment Footer -->
 <th:block th:fragment="footer">
-    <footer>
-        <p>&copy; 2023 LoveHotel. Tous droits réservés.</p>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <p class="text-muted text-center">&copy; 2023 LoveHotel. Tous droits réservés.</p>
+        </div>
     </footer>
 </th:block>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des chambres</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Liste des chambres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>hotel name</td>
+                <td>hotel address</td>
+                <td>type</td>
+                <td>price</td>
+                <td>actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="chamber : ${list}" th:object="${chamber}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{name}"></td>
+                <td th:text="*{hotel.name}"></td>
+                <td th:text="*{hotel.address.number} + ' ' + *{hotel.address.box} + ' ' + *{hotel.address.street} + ' ' + *{hotel.address.zip} + ' ' + *{hotel.address.country}"></td>
+                <td th:text="*{type}"></td>
+                <td th:text="*{price}"></td>
+                <td>
+                    <a th:href="@{/chamber/{id}(id=*{id})}">details</a>
+                    <a th:href="@{/chamber/update-chamber/{id}(id=*{id})}">update</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

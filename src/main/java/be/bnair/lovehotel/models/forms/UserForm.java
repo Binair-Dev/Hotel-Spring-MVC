@@ -41,7 +41,7 @@ public class UserForm {
 
     @Past(message = "You cannot be born in the futur")
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @InPast(amount = 18, unit = ChronoUnit.YEARS)
     private LocalDate birthDate;
 }

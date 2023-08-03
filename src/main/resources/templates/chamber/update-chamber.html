@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mettre à jour une chambre</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+</head>
+<body>
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+<main class="container">
+    <h1>Mettre à jour une chambre</h1>
+
+    <form th:action="@{/chamber/update-chamber/{id}(id=${chamber.id})}" th:object="${chamber}" method="post">
+
+        <div>
+            <label for="name">Nom de la chambre:</label>
+            <input type="text" id="name" name="name" required th:field="*{name}" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="hotel">Hôtel:</label>
+            <select id="hotel" name="hotel" required>
+                <option value="">Sélectionner un hôtel</option>
+                <option th:each="hotel : ${hotelList}" th:value="${hotel.id}" th:text="${hotel.name}" th:selected="${hotel.id == chamber.hotel.id}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('hotel')}" th:errors="*{hotel}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="type">Type de chambre:</label>
+            <select id="type" name="type" required>
+                <option value="">Sélectionner un type</option>
+                <option th:each="enumType : ${T(be.bnair.lovehotel.utils.EnumChamberType).values()}" th:value="${enumType}" th:text="${enumType}" th:selected="${enumType == chamber.type}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="error"></span>
+        </div>
+
+        <div>
+            <label for="price">Prix:</label>
+            <input type="number" id="price" name="price" required th:field="*{price}" />
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error"></span>
+        </div>
+
+        <div>
+            <button type="submit">Mettre à jour</button>
+        </div>
+
+    </form>
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+</body>
+</html>

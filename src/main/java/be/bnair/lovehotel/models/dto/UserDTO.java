@@ -1,7 +1,7 @@
 package be.bnair.lovehotel.models.dto;
 
 import be.bnair.lovehotel.models.entities.User;
-import be.bnair.lovehotel.utils.UserEnumRole;
+import be.bnair.lovehotel.utils.EnumUserRole;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class UserDTO {
     private String email;
     private String password;
     private AddressDTO address;
-    private UserEnumRole role;
+    private EnumUserRole role;
     private LocalDate birthDate;
     private boolean enabled;
 

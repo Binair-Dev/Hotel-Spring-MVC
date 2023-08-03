@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "lh_reservation")
 public class Reservation {
 
     @Id

@@ -1,11 +1,15 @@
 package be.bnair.lovehotel.models.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Data
@@ -19,10 +23,12 @@ public class Hotel {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "address_love_id")
+    @JoinColumn(name = "lh_address")
     private Address address;
 
     @ManyToOne
-    @JoinColumn(name = "hotel_owner_id")
     private User owner;
+
+    @ManyToMany
+    private List<User> employees;
 }

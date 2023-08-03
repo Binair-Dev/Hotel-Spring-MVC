@@ -16,7 +16,7 @@
             <label for="name">Nom de l'hôtel:</label>
             <input type="text" id="name" name="name" required th:field="*{name}" />
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
-        </div>        
+        </div>
 
         <div>
             <label for="address">Adresse:</label>
@@ -36,6 +36,13 @@
             <span th:if="${#fields.hasErrors('owner')}" th:errors="*{owner}" class="error"></span>
         </div>
 
+        <div>
+            <label for="employees">Employés:</label>
+            <select id="employees" name="employees" multiple required>
+                <option th:each="employee : ${employeeList}" th:value="${employee.id}" th:text="${employee.first_name + ' ' + employee.last_name}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('employees')}" th:errors="*{employees}" class="error"></span>
+        </div>
 
         <div>
             <button type="submit">Créer</button>

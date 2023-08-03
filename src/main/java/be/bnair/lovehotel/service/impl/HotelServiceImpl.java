@@ -1,24 +1,17 @@
 package be.bnair.lovehotel.service.impl;
 
-import be.bnair.lovehotel.models.dto.AddressDTO;
 import be.bnair.lovehotel.models.dto.HotelDTO;
-import be.bnair.lovehotel.models.dto.UserDTO;
 import be.bnair.lovehotel.models.entities.Address;
 import be.bnair.lovehotel.models.entities.Hotel;
-import be.bnair.lovehotel.models.forms.AddressForm;
 import be.bnair.lovehotel.models.forms.HotelForm;
-import be.bnair.lovehotel.models.forms.UserForm;
 import be.bnair.lovehotel.repository.AddressRepository;
 import be.bnair.lovehotel.repository.HotelRepository;
 import be.bnair.lovehotel.repository.UserRepository;
 import be.bnair.lovehotel.models.entities.User;
 import be.bnair.lovehotel.service.HotelService;
-import be.bnair.lovehotel.service.UserService;
-import be.bnair.lovehotel.utils.UserEnumRole;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -53,6 +46,11 @@ public class HotelServiceImpl implements HotelService {
             hotel.setOwner(user.get());
         } else throw new IllegalStateException("User " + form.getAddress() + " does not exist");
 
+        List<User> empls = userRepository.findAll().stream()
+        .filter(u -> form.getEmployees().contains(u.getId()))
+        .toList();
+        hotel.setEmployees(empls);
+
         hotelRepository.save(hotel);
     }
 
@@ -80,6 +78,14 @@ public class HotelServiceImpl implements HotelService {
             userToUpdate.setOwner(user.get());
         } else throw new IllegalStateException("User " + form.getAddress() + " does not exist");
         
+        List<User> empls = form.getEmployees().stream()
+            .map(userRepository::findById)
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .collect(Collectors.toList());
+
+        userToUpdate.setEmployees(empls);
+
         hotelRepository.save(userToUpdate);
     }
 

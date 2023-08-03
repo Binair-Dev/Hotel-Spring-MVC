@@ -1,5 +1,7 @@
 package be.bnair.lovehotel.models.forms;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -10,7 +12,9 @@ public class HotelForm {
     @Size(min=3)
     private String name;
 
-    private long address;
+    private Long address;
 
-    private long owner;
+    private Long owner;
+
+    private List<Long> employees;
 }

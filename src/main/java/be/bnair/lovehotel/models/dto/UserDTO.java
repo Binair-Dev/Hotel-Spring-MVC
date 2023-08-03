@@ -16,6 +16,7 @@ public class UserDTO {
     private String email;
     private String password;
     private AddressDTO address;
+    private UserEnumRole role;
     private LocalDate birthDate;
     private boolean enabled;
 
@@ -30,6 +31,7 @@ public class UserDTO {
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .address(AddressDTO.toDTO(entity.getAddress()))
+                .role(entity.getRole())
                 .birthDate(entity.getBirthDate())
                 .enabled(entity.isEnabled())
                 .build();

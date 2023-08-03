@@ -27,6 +27,18 @@
                 <span th:text="${hotel.owner.first_name}"></span>
                 <span th:text="${hotel.owner.last_name}"></span>
             </p>
+            <p><strong>Employés:</strong></p>
+            <ul>
+                <!-- Condition pour vérifier si la liste des employés est vide -->
+                <li th:if="${hotel.employees.isEmpty()}">
+                    Il n'y a aucun employé actuellement.
+                </li>
+                <!-- Boucle pour afficher la liste des employés s'il y en a -->
+                <li th:each="employee : ${hotel.employees}">
+                    <span th:text="${employee.first_name}"></span>
+                    <span th:text="${employee.last_name}"></span>
+                </li>
+            </ul>
         </div>
     </main>
 

@@ -52,6 +52,7 @@ public class DataInit implements InitializingBean {
         brian.setEmail("van.bellinghen.brian@gmail.com");
         brian.setPassword("unmotdepassedequalite");
         brian.setAddress(brianAddress);
+        brian.setRole(UserEnumRole.ADMIN);
         brian.setBirthDate(LocalDate.of(1997, 8, 9));
         brian.setEnabled(true);
         userRepository.save(brian);
@@ -62,6 +63,7 @@ public class DataInit implements InitializingBean {
         julie.setEmail("frazelle.julie@gmail.com");
         julie.setPassword("unmotdepassedequalite");
         julie.setAddress(brianAddress);
+        julie.setRole(UserEnumRole.MEMBER);
         julie.setBirthDate(LocalDate.of(1977, 9, 8));
         julie.setEnabled(true);
         userRepository.save(julie);

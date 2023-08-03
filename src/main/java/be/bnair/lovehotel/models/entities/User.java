@@ -23,6 +23,9 @@ public class User {
     @JoinColumn(name = "address_love_id")
     private Address address;
 
+    @Enumerated(EnumType.STRING)
+    private UserEnumRole role;
+
     private LocalDate birthDate;
     private boolean enabled;
 

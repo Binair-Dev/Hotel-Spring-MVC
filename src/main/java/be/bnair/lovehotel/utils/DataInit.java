@@ -75,6 +75,17 @@ public class DataInit implements InitializingBean {
         julie.setBirthDate(LocalDate.of(1977, 9, 8));
         julie.setEnabled(true);
         userRepository.save(julie);
+
+        User tanya = new User();
+        tanya.setFirst_name("Vanhoebroeck");
+        tanya.setLast_name("Tanya");
+        tanya.setEmail("vanhoebroeck.tanya@gmail.com");
+        tanya.setPassword("unmotdepassedequalite");
+        tanya.setAddress(brianAddress);
+        tanya.setRole(EnumUserRole.MEMBER);
+        tanya.setBirthDate(LocalDate.of(1988, 7, 8));
+        tanya.setEnabled(true);
+        userRepository.save(tanya);
         
         Hotel hotel = new Hotel();
         hotel.setName("SexOnTheFloor");

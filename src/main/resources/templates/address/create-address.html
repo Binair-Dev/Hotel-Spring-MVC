@@ -2,61 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Street Creation</title>
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Add your custom styles here */
+        /* For example, to change the color of the "Submit" button */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style for displaying error messages */
+        .form-error {
+            color: red;
+        }
+
+        /* Style for the form */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container form {
+            display: grid;
+            grid-gap: 10px;
+        }
+
+        .container label {
+            font-weight: bold;
+        }
+
+        .container div {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+
+        .container input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .container button {
+            grid-column: span 2;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
 
 <main class="container">
 
-    <h1>Création user</h1>
+    <h1>Street Creation</h1>
     <form action="/address/create-address" method="post" th:object="${formulaire}">
         <div class="form-street">
-            <label for="in-street">street:</label>
+            <label for="in-street">Street:</label>
             <input type="text" th:field="*{street}" id="in-street">
-            <div th:if="${#fields.hasErrors('street')}" >
+            <div th:if="${#fields.hasErrors('street')}">
                 <span th:errors="*{street}" class="form-error"></span>
             </div>
         </div>
         <div class="form-number">
-            <label for="in-number">number:</label>
+            <label for="in-number">Number:</label>
             <input type="number" th:field="*{number}" id="in-number">
-            <div th:if="${#fields.hasErrors('number')}" >
+            <div th:if="${#fields.hasErrors('number')}">
                 <span th:errors="*{number}" class="form-error"></span>
             </div>
         </div>
         <div class="form-box">
-            <label for="in-box">box:</label>
+            <label for="in-box">Box:</label>
             <input type="text" th:field="*{box}" id="in-box">
-            <div th:if="${#fields.hasErrors('box')}" >
+            <div th:if="${#fields.hasErrors('box')}">
                 <span th:errors="*{box}" class="form-error"></span>
             </div>
         </div>
         <div class="form-city">
-            <label for="in-city">city:</label>
+            <label for="in-city">City:</label>
             <input type="text" th:field="*{city}" id="in-city">
-            <div th:if="${#fields.hasErrors('city')}" >
+            <div th:if="${#fields.hasErrors('city')}">
                 <span th:errors="*{city}" class="form-error"></span>
             </div>
         </div>
         <div class="form-zip">
-            <label for="in-zip">zip:</label>
+            <label for="in-zip">Zip:</label>
             <input type="number" th:field="*{zip}" id="in-zip">
-            <div th:if="${#fields.hasErrors('zip')}" >
+            <div th:if="${#fields.hasErrors('zip')}">
                 <span th:errors="*{zip}" class="form-error"></span>
             </div>
         </div>
         <div class="form-country">
-            <label for="in-country">country:</label>
+            <label for="in-country">Country:</label>
             <input type="text" th:field="*{country}" id="in-country">
-            <div th:if="${#fields.hasErrors('country')}" >
+            <div th:if="${#fields.hasErrors('country')}">
                 <span th:errors="*{country}" class="form-error"></span>
             </div>
         </div>
-        <button type="submit">Envoyer</button>
-
-
+        <button type="submit">Create</button>
     </form>
 </main>
 

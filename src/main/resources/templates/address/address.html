@@ -2,51 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Address Details</title>
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        /* Par exemple, pour changer la couleur du bouton "Back" */
+        .btn-secondary {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .user-details {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .user-details h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-details .field-title {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
-<main class="container">
-    <div class="card mt-2" th:object="${address}">
+    <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <main class="container">
+        <div class="user-details card mt-2" th:object="${address}">
 
-        <h1>Address details</h1>
+            <h1 class="card-header">Address Details</h1>
 
-        <div class="card-body">
-            <p>
-                <span class="field-title">id: </span>
-                <span class="field-value" th:text="*{id}"></span>
-            </p>
-            <p>
-                <span class="field-title">street: </span>
-                <span class="field-value" th:text="*{street}"></span>
-            </p>
-            <p>
-                <span class="field-title">number: </span>
-                <span class="field-value" th:text="*{number}"></span>
-            </p>
-            <p>
-                <span class="field-title">box: </span>
-                <span class="field-value" th:text="*{box}"></span>
-            </p>
-            <p>
-                <span class="field-title">city: </span>
-                <span class="field-value" th:text="*{city}"></span>
-            </p>
-            <p>
-                <span class="field-title">zip: </span>
-                <span class="field-value" th:text="*{zip}"></span>
-            </p>
-            <p>
-                <span class="field-title">country: </span>
-                <span class="field-value" th:text="*{country}"></span>
-            </p>
+            <div class="card-body">
+                <p>
+                    <span class="field-title">ID: </span>
+                    <span class="field-value" th:text="*{id}"></span>
+                </p>
+                <p>
+                    <span class="field-title">Street: </span>
+                    <span class="field-value" th:text="*{street}"></span>
+                </p>
+                <p>
+                    <span class="field-title">Number: </span>
+                    <span class="field-value" th:text="*{number}"></span>
+                </p>
+                <p>
+                    <span class="field-title">Box: </span>
+                    <span class="field-value" th:text="*{box}"></span>
+                </p>
+                <p>
+                    <span class="field-title">City: </span>
+                    <span class="field-value" th:text="*{city}"></span>
+                </p>
+                <p>
+                    <span class="field-title">Zip: </span>
+                    <span class="field-value" th:text="*{zip}"></span>
+                </p>
+                <p>
+                    <span class="field-title">Country: </span>
+                    <span class="field-value" th:text="*{country}"></span>
+                </p>
+            </div>
         </div>
-    </div>
-    <a href="/address/addresses">back</a>
-</main>
-
-
-<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+        <div style="margin: 10px 0px 10px 0px;" class="text-center">
+            <a href="/address/addresses" class="btn btn-secondary">Back</a>
+        </div>
+    </main>
+    <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
 </body>
 </html>

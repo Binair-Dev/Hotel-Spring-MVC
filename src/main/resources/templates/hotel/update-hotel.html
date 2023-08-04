@@ -2,40 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mettre à jour un hôtel</title>
+    <title>Hotel Update</title>
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        /* Par exemple, pour changer la couleur du bouton "Mettre à jour" */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style pour afficher les messages d'erreur */
+        .error {
+            color: red;
+        }
+
+        /* Style pour le formulaire */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container form {
+            display: grid;
+            grid-gap: 10px;
+        }
+
+        .container label {
+            font-weight: bold;
+        }
+
+        .container div {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+
+        .container select,
+        .container input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .container button {
+            grid-column: span 2;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
 <main class="container">
-    <h1>Mettre à jour un hôtel</h1>
+    <h1>Hotel Update</h1>
     <form th:object="${formulaire}" th:action="@{/hotel/update-hotel/{id}(id=${id})}" method="post">
         <div>
-            <label for="name">Nom de l'hôtel:</label>
+            <label for="name">Name:</label>
             <input type="text" id="name" name="name" required th:field="*{name}" />
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>
 
         <div>
-            <label for="address">Adresse:</label>
+            <label for="address">Adress:</label>
             <select id="address" name="selectedAddressId" required>
-                <option value="">Sélectionner une adresse</option>
+                <option value="">Select an Address</option>
                 <option th:each="address : ${addressList}" th:value="${address.id}" th:text="${address.street + ', ' + address.city + ', ' + address.country}" th:selected="${address.id == formulaire.address}"></option>
             </select>
             <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error"></span>
         </div>
 
         <div>
-            <label for="owner">Propriétaire:</label>
+            <label for="owner">Owner:</label>
             <select id="owner" name="selectedOwnerId" required>
-                <option value="">Sélectionner un propriétaire</option>
+                <option value="">Select an Owner</option>
                 <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.first_name + ' ' + user.last_name}" th:selected="${user.id == formulaire.owner}"></option>
             </select>
             <span th:if="${#fields.hasErrors('owner')}" th:errors="*{owner}" class="error"></span>
         </div>
 
         <div>
-            <label for="employees">Employés:</label>
+            <label for="employees">Employees:</label>
             <select id="employees" name="employees" multiple required>
                 <option th:each="employee : ${employeeList}" th:value="${employee.id}" th:text="${employee.first_name + ' ' + employee.last_name}" th:selected="${formulaire.employees != null and formulaire.employees.contains(employee.id)}"></option>
             </select>
@@ -43,7 +97,7 @@
         </div>
 
         <div>
-            <button type="submit">Mettre à jour</button>
+            <button type="submit">Update</button>
         </div>
 
     </form>

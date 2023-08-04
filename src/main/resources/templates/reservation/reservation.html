@@ -2,63 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Détails de la réservation</title>
+    <title>Reservation Details</title>
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        /* Par exemple, pour changer la couleur du bouton "Back" */
+        .btn-secondary {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .user-details {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .user-details h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-details h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
-<main class="container">
-    <h1>Détails de la réservation</h1>
+    <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <main class="container">
+        <div class="user-details card mt-2">
+            <h1 class="card-header">Reservation Details</h1>
 
-    <div>
-        <h2>ID:</h2>
-        <p th:text="${reservation.id}"></p>
-    </div>
+            <div>
+                <h2>User:</h2>
+                <p>
+                    <p>First Name: <span th:text="${reservation.user.first_name}"></span></p>
+                    <p>Last Name: <span th:text="${reservation.user.last_name}"></span></p>
+                    <p>Email: <span th:text="${reservation.user.email}"></span></p>
+                    <p>Role: <span th:text="${reservation.user.role}"></span></p>
+                    <p>BirthDate: <span th:text="${reservation.user.birthDate}"></span></p>
+                    <p>Enabled: <span th:text="${reservation.user.enabled}"></span></p>
+                </p>
+            </div>
 
-    <div>
-        <h2>Utilisateur:</h2>
-        <p>
-            <p>Nom: <span th:text="${reservation.user.first_name}"></p>
-            <p>Prénom: <span th:text="${reservation.user.last_name}"></p>
-            <p>Email: <span th:text="${reservation.user.email}"></p>
-            <p>Role: <span th:text="${reservation.user.role}"></p>
-            <p>Date de naissance: <span th:text="${reservation.user.birthDate}"></p>
-            <p>Enabled: <span th:text="${reservation.user.enabled}"></p>
-            <!-- Ajoutez ici d'autres informations spécifiques à l'utilisateur -->
-        </p>
-    </div>
+            <div>
+                <h2>Chamber:</h2>
+                <p>
+                    <p>Chamber Name: <span th:text="${reservation.chamber.name}"></span></p>
+                    <p>Hotel: <span th:text="${reservation.chamber.hotel.name}"></span></p>
+                    <p>Hotel Adress: <span th:text="${reservation.chamber.hotel.address.number + ' ' + reservation.chamber.hotel.address.box + ' ' + reservation.chamber.hotel.address.street}"></span></p>
+                    <p th:text="${reservation.chamber.hotel.address.city + ', ' + reservation.chamber.hotel.address.country}"></p>
+                    <p>Chamber Type: <span th:text="${reservation.chamber.type}"></span></p>
+                    <p>Price: <span th:text="${reservation.chamber.price} + '€/nuit'"></span></p>
+                </p>
+            </div>
 
-    <div>
-        <h2>Chambre:</h2>
-        <p>
-            <p>Nom de la chambre: <span th:text="${reservation.chamber.name}"></p>
-            <p>Hôtel: <span th:text="${reservation.chamber.hotel.name}"></p>
-            <p>Adresse de l'hôtel:
-            <p th:text="${reservation.chamber.hotel.address.number + ' ' + reservation.chamber.hotel.address.box + ' ' + reservation.chamber.hotel.address.street}"></p>
-            <p th:text="${reservation.chamber.hotel.address.city + ', ' + reservation.chamber.hotel.address.country}"></p>
-            <p>Type de chambre:
+            <div>
+                <h2>Start Date:</h2>
+                <p th:text="${reservation.startDate}"></p>
+            </div>
 
-            </span>
-            <span th:text="${reservation.chamber.type}"></p>
-            <p>Prix: </span><span th:text="${reservation.chamber.price} + '€/nuit'"></p>
-            <!-- Ajoutez ici d'autres informations spécifiques à la chambre -->
-        </p>
-    </div>
+            <div>
+                <h2>End Date:</h2>
+                <p th:text="${reservation.endDate}"></p>
+            </div>
+        </div>
 
-    <div>
-        <h2>Date de début:</h2>
-        <p th:text="${reservation.startDate}"></p>
-    </div>
-
-    <div>
-        <h2>Date de fin:</h2>
-        <p th:text="${reservation.endDate}"></p>
-    </div>
-
-    <!-- Ajoutez ici d'autres informations que vous souhaitez afficher pour la réservation -->
-
-</main>
-
-<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+        <div style="margin: 10px 0px 10px 0px;" class="text-center">
+            <a href="/reservation/reservations" class="btn btn-secondary">Back</a>
+        </div>
+    </main>
+    <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
 </body>
 </html>

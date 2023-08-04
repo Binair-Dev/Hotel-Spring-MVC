@@ -1,98 +1,159 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Formulaire Utilisateur</title>
+    <title>User creation</title>
+    <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        /* Par exemple, pour changer la couleur du bouton "Valider" */
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .user-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .user-form h1,
+        .user-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .user-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .user-form input[type="text"],
+        .user-form input[type="number"],
+        .user-form input[type="email"],
+        .user-form input[type="password"],
+        .user-form input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .user-form .form-error {
+            color: red;
+        }
+
+        .user-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
-<h1>Formulaire Utilisateur</h1>
-<form th:object="${formulaire}" th:action="@{/user/create-user}" method="post">
-    <div>
-        <label>Prénom:</label>
-        <input type="text" th:field="*{first_name}" required>
-        <span th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}"></span>
-    </div>
-    <div>
-        <label>Nom:</label>
-        <input type="text" th:field="*{last_name}" required>
-        <span th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></span>
-    </div>
-    <div>
-        <label>Email:</label>
-        <input type="email" th:field="*{email}" required>
-        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-    </div>
-    <div>
-        <label>Mot de passe:</label>
-        <input type="password" th:field="*{password}" required>
-        <div th:if="${#fields.hasGlobalErrors()}">
-            <span class="error-message" th:if="${not #fields.hasErrors('*') and not #fields.hasErrors('addressForm.country') 
-                    and not #fields.hasErrors('first_name') and not #fields.hasErrors('last_name') 
-                    and not #fields.hasErrors('email') and not #fields.hasErrors('password') 
-                    and not #fields.hasErrors('confirmPassword') and not #fields.hasErrors('birthDate') 
-                    and not #fields.hasErrors('addressForm.street') and not #fields.hasErrors('addressForm.number') 
-                    and not #fields.hasErrors('addressForm.box') and not #fields.hasErrors('addressForm.city') 
-                    and not #fields.hasErrors('addressForm.zip')}"></span>
-                <span th:each="error : ${#fields.globalErrors}" th:text="${error}"></span>
-        </div>
-    </div>
-    <div>
-        <label>Confirmer le mot de passe:</label>
-        <input type="password" th:field="*{confirmPassword}" required>
-        <div th:if="${#fields.hasGlobalErrors()}">
-            <span class="error-message" th:if="${not #fields.hasErrors('*') and not #fields.hasErrors('addressForm.country') 
-                    and not #fields.hasErrors('first_name') and not #fields.hasErrors('last_name') 
-                    and not #fields.hasErrors('email') and not #fields.hasErrors('password') 
-                    and not #fields.hasErrors('confirmPassword') and not #fields.hasErrors('birthDate') 
-                    and not #fields.hasErrors('addressForm.street') and not #fields.hasErrors('addressForm.number') 
-                    and not #fields.hasErrors('addressForm.box') and not #fields.hasErrors('addressForm.city') 
-                    and not #fields.hasErrors('addressForm.zip')}"></span>
-                <span th:each="error : ${#fields.globalErrors}" th:text="${error}"></span>
-        </div>
-    </div>
-    <div>
-        <label>Date de naissance:</label>
-        <input type="date" th:field="*{birthDate}" required>
-        <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
-    </div>
-
-    <!-- Formulaire pour l'adresse -->
-    <h2>Adresse</h2>
-    <div>
-        <label>Rue:</label>
-        <input type="text" th:field="*{addressForm.street}" required>
-        <span th:if="${#fields.hasErrors('addressForm.street')}" th:errors="*{addressForm.street}"></span>
-    </div>
-    <div>
-        <label>Numéro:</label>
-        <input type="number" th:field="*{addressForm.number}" required>
-        <span th:if="${#fields.hasErrors('addressForm.number')}" th:errors="*{addressForm.number}"></span>
-    </div>
-    <div>
-        <label>Boîte:</label>
-        <input type="text" th:field="*{addressForm.box}">
-        <span th:if="${#fields.hasErrors('addressForm.box')}" th:errors="*{addressForm.box}"></span>
-    </div>
-    <div>
-        <label>Ville:</label>
-        <input type="text" th:field="*{addressForm.city}" required>
-        <span th:if="${#fields.hasErrors('addressForm.city')}" th:errors="*{addressForm.city}"></span>
-    </div>
-    <div>
-        <label>Code postal:</label>
-        <input type="number" th:field="*{addressForm.zip}" required>
-        <span th:if="${#fields.hasErrors('addressForm.zip')}" th:errors="*{addressForm.zip}"></span>
-    </div>
-    <div>
-        <label>Pays:</label>
-        <input type="text" th:field="*{addressForm.country}" required>
-        <span th:if="${#fields.hasErrors('addressForm.country')}" th:errors="*{addressForm.country}"></span>
-    </div>    
-    <div>
-        <button type="submit">Valider</button>
-    </div>
-</form>
-<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+    <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <main class="container user-form">
+        <h1>User creation</h1>
+        <form th:object="${formulaire}" th:action="@{/user/create-user}" method="post">
+            <div class="form-group">
+                <label for="in-first_name">First Name:</label>
+                <input type="text" th:field="*{first_name}" id="in-first_name" required>
+                <div th:if="${#fields.hasErrors('first_name')}">
+                    <span th:errors="*{first_name}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-last_name">Last Name:</label>
+                <input type="text" th:field="*{last_name}" id="in-last_name" required>
+                <div th:if="${#fields.hasErrors('last_name')}">
+                    <span th:errors="*{last_name}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-email">Email:</label>
+                <input type="email" th:field="*{email}" id="in-email" required>
+                <div th:if="${#fields.hasErrors('email')}">
+                    <span th:errors="*{email}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-password">Password:</label>
+                <input type="password" th:field="*{password}" id="in-password" required>
+                <div th:if="${#fields.hasErrors('password')}">
+                    <span th:errors="*{password}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-confirmPassword">Password Confirm:</label>
+                <input type="password" th:field="*{confirmPassword}" id="in-confirmPassword" required>
+                <div th:if="${#fields.hasErrors('confirmPassword')}">
+                    <span th:errors="*{confirmPassword}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-birthDate">Birth Date:</label>
+                <input type="date" th:field="*{birthDate}" id="in-birthDate" required>
+                <div th:if="${#fields.hasErrors('birthDate')}">
+                    <span th:errors="*{birthDate}" class="form-error"></span>
+                </div>
+            </div>
+            <h2>Address creation</h2>
+            <div class="form-group">
+                <label for="in-addressForm.street">Street:</label>
+                <input type="text" th:field="*{addressForm.street}" id="in-addressForm.street" required>
+                <div th:if="${#fields.hasErrors('addressForm.street')}">
+                    <span th:errors="*{addressForm.street}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-addressForm.number">Number:</label>
+                <input type="number" th:field="*{addressForm.number}" id="in-addressForm.number" required>
+                <div th:if="${#fields.hasErrors('addressForm.number')}">
+                    <span th:errors="*{addressForm.number}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-addressForm.box">Box:</label>
+                <input type="text" th:field="*{addressForm.box}" id="in-addressForm.box">
+                <div th:if="${#fields.hasErrors('addressForm.box')}">
+                    <span th:errors="*{addressForm.box}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-addressForm.city">City:</label>
+                <input type="text" th:field="*{addressForm.city}" id="in-addressForm.city" required>
+                <div th:if="${#fields.hasErrors('addressForm.city')}">
+                    <span th:errors="*{addressForm.city}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-addressForm.zip">Zip:</label>
+                <input type="number" th:field="*{addressForm.zip}" id="in-addressForm.zip" required>
+                <div th:if="${#fields.hasErrors('addressForm.zip')}">
+                    <span th:errors="*{addressForm.zip}" class="form-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="in-addressForm.country">Country:</label>
+                <input type="text" th:field="*{addressForm.country}" id="in-addressForm.country" required>
+                <div th:if="${#fields.hasErrors('addressForm.country')}">
+                    <span th:errors="*{addressForm.country}" class="form-error"></span>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="submit-btn">Create</button>
+            </div>
+        </form>
+    </main>
+    <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
 </body>
 </html>

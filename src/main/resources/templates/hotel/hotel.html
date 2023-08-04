@@ -2,46 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Détails de l'hôtel</title>
+    <title>Hotel Details</title>
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        /* Par exemple, pour changer la couleur du bouton "Back" */
+        .back-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .user-details {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .user-details h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-details .field-title {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
     <main class="container">
-        <h1>Détails de l'hôtel</h1>
-
-        <div>
-            <p><strong>Id:</strong> <span th:text="${hotel.id}"></span></p>
-            <p><strong>Nom:</strong> <span th:text="${hotel.name}"></span></p>
-            <p>
-                <strong>Adresse:</strong> 
-                <span th:text="${hotel.address.street}"></span>
-                <span th:text="${hotel.address.number}"></span>
-                <span th:text="${hotel.address.box}"></span>
-                <span th:text="${hotel.address.city}"></span>
-                <span th:text="${hotel.address.zip}"></span>
-                <span th:text="${hotel.address.country}"></span>
-            </p>
-            <p>
-                <strong>Propriétaire:</strong> 
-                <span th:text="${hotel.owner.first_name}"></span>
-                <span th:text="${hotel.owner.last_name}"></span>
-            </p>
-            <p><strong>Employés:</strong></p>
-            <ul>
-                <!-- Condition pour vérifier si la liste des employés est vide -->
-                <li th:if="${hotel.employees.isEmpty()}">
-                    Il n'y a aucun employé actuellement.
-                </li>
-                <!-- Boucle pour afficher la liste des employés s'il y en a -->
-                <li th:each="employee : ${hotel.employees}">
-                    <span th:text="${employee.first_name}"></span>
-                    <span th:text="${employee.last_name}"></span>
-                </li>
-            </ul>
+        <div class="user-details card mt-2" th:object="${hotel}">
+            <h1 class="card-header">Hotel Details</h1>
+            <div class="card-body">
+                <p class="mb-1">
+                    <label class="field-title">ID:</label>
+                    <span class="field-value" th:text="${hotel.id}"></span>
+                </p>
+                <p class="mb-1">
+                    <label class="field-title">Name:</label>
+                    <span class="field-value" th:text="${hotel.name}"></span>
+                </p>
+                <p class="mb-1">
+                    <label class="field-title">Address:</label>
+                    <span class="field-value" th:text="${hotel.address.street}"></span>
+                    <span class="field-value" th:text="${hotel.address.number}"></span>
+                    <span class="field-value" th:text="${hotel.address.box}"></span>
+                    <br>
+                    <span class="field-value" th:text="${hotel.address.zip} + ' ' + ${hotel.address.city}"></span>
+                    <br>
+                    <span class="field-value" th:text="${hotel.address.country}"></span>
+                </p>
+                <p class="mb-1">
+                    <label class="field-title">Owner:</label>
+                    <span class="field-value" th:text="${hotel.owner.first_name}"></span>
+                    <span class="field-value" th:text="${hotel.owner.last_name}"></span>
+                </p>
+                <p class="mb-1">
+                    <label class="field-title">Employees:</label>
+                </p>
+                <ul>
+                    <li th:if="${hotel.employees.isEmpty()}">Il n'y a aucun employé actuellement.</li>
+                    <li th:each="employee : ${hotel.employees}">
+                        <span class="field-value" th:text="${employee.first_name}"></span>
+                        <span class="field-value" th:text="${employee.last_name}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin: 10px 0px 10px 0px;" class="text-center">
+            <a href="/hotel/hotels" class="btn btn-secondary">Back</a>
         </div>
     </main>
-
-<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+    <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
 </body>
 </html>

@@ -2,36 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Détails de la chambre</title>
+    <title>Chamber Details</title>
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        /* Par exemple, pour changer la couleur du bouton "Back" */
+        .back-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .user-details {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .user-details h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-details h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
-<main class="container">
-    <h1>Détails de la chambre</h1>
-    <div>
-        <h2>Nom de la chambre:</h2>
-        <p th:text="${chamber.name}"></p>
-    </div>
+    <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+    <main class="container">
+        <div class="user-details card mt-2" th:object="${chamber}">
+            <h1 class="card-header">Chamber Details</h1>
+            <div class="card-body">
+                <div>
+                    <h2>Chamber name:</h2>
+                    <p class="field-value" th:text="${chamber.name}"></p>
+                </div>
 
-    <div>
-        <h2>Hôtel:</h2>
-        <p th:text="${chamber.hotel.name}"></p>
-        <p th:text="${chamber.hotel.address.number + chamber.hotel.address.box + ' ' + chamber.hotel.address.street}"></p>
-        <p th:text="${chamber.hotel.address.zip + ', ' + chamber.hotel.address.city}"></p>
-        <p th:text="${chamber.hotel.address.country}"></p>
-    </div>
+                <div>
+                    <h2>Hotel Details:</h2>
+                    <p class="field-value" th:text="${chamber.hotel.name}"></p>
+                    <p class="field-value" th:text="${chamber.hotel.address.number + ' ' + chamber.hotel.address.box + ' ' + chamber.hotel.address.street}"></p>
+                    <p class="field-value" th:text="${chamber.hotel.address.zip + ', ' + chamber.hotel.address.city}"></p>
+                    <p class="field-value" th:text="${chamber.hotel.address.country}"></p>
+                </div>
 
-    <div>
-        <h2>Type de chambre:</h2>
-        <p th:text="${chamber.type}"></p>
-        <p th:text="${chamber.price} + '€/nuit'"></p>
-    </div>
+                <div>
+                    <h2>Chamber Type:</h2>
+                    <p class="field-value" th:text="${chamber.type}"></p>
+                    <p class="field-value" th:text="${chamber.price + '€/nuit'}"></p>
+                </div>
 
-    <!-- Ajoutez ici d'autres informations que vous souhaitez afficher pour la chambre -->
+                <!-- Ajoutez ici d'autres informations que vous souhaitez afficher pour la chambre -->
 
-</main>
-
-<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+            </div>
+        </div>
+        <div style="margin: 10px 0px 10px 0px;" class="text-center">
+            <a href="/chamber/chambers" class="btn btn-secondary">Back</a>
+        </div>
+    </main>
+    <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
 </body>
 </html>

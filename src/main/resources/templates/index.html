@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>LoveHotel | Accueil</title>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <th:block th:replace="~{ /fragment/fragments :: css }"></th:block>
 	<th:block th:replace="~{ /fragment/fragments :: js }"></th:block>
+	<style>
+		body {
+			font-family: 'Quicksand', sans-serif;
+		}
+	</style>
 </head>
 <body>
     <th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
@@ -32,7 +38,7 @@
             </div>
         </div>
     </div>
-
+	</br>
     <th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
 </body>
 </html>

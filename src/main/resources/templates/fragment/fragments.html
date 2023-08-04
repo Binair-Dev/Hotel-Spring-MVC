@@ -1,6 +1,7 @@
 
 <th:block th:fragment="css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </th:block>
 
 <th:block th:fragment="js">
@@ -11,6 +12,19 @@
 
 <th:block th:fragment="header">
     <style>
+        button {
+            font-size: smaller;
+            font-weight: bolder;
+            font-family: 'Dancing Script';
+        }
+        
+        .custom-font {
+            color: white;
+            font-size: x-large;
+            font-weight: bolder;
+            font-family: 'Dancing Script', cursive;
+        }
+
 		body {
 			cursor: url('https://png.pngtree.com/element_our/20190602/ourmid/pngtree-red-bra-decoration-illustration-image_1383494.jpg'), auto;
 		}
@@ -56,40 +70,43 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .invert { filter: invert(100%); }
     </style>
     <header>
         <nav>
-            <button onclick="window.location.href='http://localhost:8080/'">HOME</button>
-            <div class="dropdown">
-                <button>Users</button>
+            <button onclick="window.location.href='http://localhost:8080/'">
+                <img class="invert" style="padding-bottom: 10px;" src="https://www.freepnglogos.com/uploads/hotel-logo-png/black-hotel-icon-download-18.png" width="45px">
+            </button>
+            <div style="padding-top: 12px;" class="dropdown">
+                <button class="custom-font">Users</button>
                 <div class="dropdown-content">
                     <button onclick="window.location.href='http://localhost:8080/user/create-user'">Create a user</button>
                     <button onclick="window.location.href='http://localhost:8080/user/users'">See users</button>
                 </div>
             </div>
-            <div class="dropdown">
-                <button>Hotels</button>
+            <div style="padding-top: 12px;" class="dropdown">
+                <button class="custom-font">Hotels</button>
                 <div class="dropdown-content">
                     <button onclick="window.location.href='http://localhost:8080/hotel/create-hotel'">Create an hotel</button>
                     <button onclick="window.location.href='http://localhost:8080/hotel/hotels'">See hotel</button>
                 </div>
             </div>
-            <div class="dropdown">
-                <button>Rooms</button>
+            <div style="padding-top: 12px;" class="dropdown">
+                <button class="custom-font">Rooms</button>
                 <div class="dropdown-content">
                     <button onclick="window.location.href='http://localhost:8080/chamber/create-chamber'">Create a room</button>
                     <button onclick="window.location.href='http://localhost:8080/chamber/chambers'">See Rooms</button>
                 </div>
             </div>
-            <div class="dropdown">
-                <button>Addresses</button>
+            <div style="padding-top: 12px;" class="dropdown">
+                <button class="custom-font">Addresses</button>
                 <div class="dropdown-content">
                     <button onclick="window.location.href='http://localhost:8080/address/create-address'">Create an address</button>
                     <button onclick="window.location.href='http://localhost:8080/address/addresses'">See addresses</button>
                 </div>
             </div>
-            <div class="dropdown">
-                <button>Reservations</button>
+            <div style="padding-top: 12px;" class="dropdown">
+                <button class="custom-font">Reservations</button>
                 <div class="dropdown-content">
                     <button onclick="window.location.href='http://localhost:8080/reservation/create-reservation'">Create a reservation</button>
                     <button onclick="window.location.href='http://localhost:8080/reservation/reservations'">See reservations</button>
